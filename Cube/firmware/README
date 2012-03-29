@@ -1,2 +1,4 @@
-Dieser Code ist schon auf die Schaltung mit einem Druckschalter optimiert.
+Dieser Code (main.c) ist schon auf die Schaltung mit einem Druckschalter optimiert.
 drückt man diesen Schalter, so wird der LED-Cube zum leuchten gebracht!
+
+Die andere Datei (Code) enthält früheren Code, also so zusagen die "Entwicklung" des Codes
