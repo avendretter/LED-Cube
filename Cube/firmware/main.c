@@ -147,15 +147,19 @@ int main(void)
     PORTB |= (1 << PORTB2); 
     
     
-    char p;
+    char p,l,j;
+   
+    
     
     while (1)
     {
         
         while( (PINB & (1<<PINB2)) < 1)
         {
-            for(p=0;p<10;p++)
+           
+            for(l=0;l<10;l++)
             {
+            
                 set(5,2);
                 set(2,2);
                 set(8,2);
@@ -172,19 +176,65 @@ int main(void)
                 set(9,2);
                 setPort(30);
                 resetarray();
+            
+                for(p=0;p<10;p++)
+                {
+                    set(5,2);
+                    set(2,2);
+                    set(8,2);
+                    set(3,3);
+                    set(6,3);
+                    set(9,3);
+                    set(1,1);
+                    set(4,1);
+                    set(7,1);
+                    setPort(5);
+                    resetarray();                    
+                    set(5,2);
+                    set(2,2);
+                    set(8,2);
+                    set(2,1);
+                    set(5,1);
+                    set(8,1);
+                    set(2,3);
+                    set(5,3);
+                    set(8,3);
+                    setPort(5);
+                    resetarray();                    
+                    set(5,2);
+                    set(2,2);
+                    set(8,2);
+                    set(1,3);
+                    set(4,3);
+                    set(7,3);
+                    set(3,1);
+                    set(6,1);
+                    set(9,1);
+                    setPort(5);
+                    resetarray();
+                    set(1,2);
+                    set(2,2);
+                    set(3,2);
+                    set(4,2);
+                    set(5,2);
+                    set(6,2);
+                    set(7,2);
+                    set(8,2);
+                    set(9,2);
+                    setPort(5);
+                    resetarray();
+                }
+            
+                
+                _delay_ms(200); 
+            
                 set(5,2);
                 set(2,2);
                 set(8,2);
-                set(3,3);
-                set(6,3);
-                set(9,3);
-                set(1,1);
-                set(4,1);
-                set(7,1);
-                setPort(5);
-                resetarray();                    
-                set(5,2);
+                setPort(30);
+                resetarray();
                 set(2,2);
+                set(5,2);
                 set(8,2);
                 set(2,1);
                 set(5,1);
@@ -192,35 +242,66 @@ int main(void)
                 set(2,3);
                 set(5,3);
                 set(8,3);
-                setPort(5);
-                resetarray();                    
-                set(5,2);
-                set(2,2);
-                set(8,2);
-                set(1,3);
-                set(4,3);
-                set(7,3);
-                set(3,1);
-                set(6,1);
-                set(9,1);
-                setPort(5);
+                setPort(30);
                 resetarray();
-                set(1,2);
-                set(2,2);
-                set(3,2);
-                set(4,2);
-                set(5,2);
-                set(6,2);
-                set(7,2);
-                set(8,2);
-                set(9,2);
-                setPort(5);
-                resetarray();
+            
+            
+                for(j=0;j<10;j++)
+                {
+                    set(1,1);
+                    set(5,1);
+                    set(9,1);
+                    set(5,1);
+                    set(1,2);
+                    set(5,2);
+                    set(9,2);
+                    set(1,3);
+                    set(5,3);
+                    set(9,3);
+                    setPort(5);
+                    resetarray();
+                
+                    set(4,1);
+                    set(5,1);
+                    set(6,1);
+                    set(4,2);
+                    set(5,2);
+                    set(6,2);
+                    set(4,3);
+                    set(5,3);
+                    set(6,3);
+                    setPort(5);
+                    resetarray();                    
+                    set(7,1);
+                    set(5,1);
+                    set(3,1);
+                    set(7,2);
+                    set(5,2);
+                    set(3,2);
+                    set(7,3);
+                    set(5,3);
+                    set(3,3);
+                    setPort(5);
+                    resetarray();
+                    set(2,1);
+                    set(5,1);
+                    set(8,1);
+                    set(2,2);
+                    set(5,2);
+                    set(8,2);
+                    set(2,3);
+                    set(5,3);
+                    set(8,3);
+                    setPort(5);
+                    resetarray();   
+                }
+                reset();
+                _delay_ms(200);
             }
         }
                 
         
     
-    };
+    }
     
 }
