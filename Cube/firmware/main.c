@@ -246,7 +246,7 @@ int main(void)
                 resetarray();
             
             
-                for(j=0;j<5;j++)
+                for(j=0;j<10;j++)
                 {
                     set(1,1);
                     set(5,1);
