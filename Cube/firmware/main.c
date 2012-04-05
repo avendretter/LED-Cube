@@ -147,18 +147,18 @@ int main(void)
     PORTB |= (1 << PORTB2); 
     
     
-    char p,l,j;
-   
+    char p,l,j,index;
+    index = 0;
     
     
     while (1)
     {
         
-        while( (PINB & (1<<PINB2)) < 1)
+        while(( (PINB & (1<<PINB2)) < 1) & (index == 0))
         {
+            index++;
            
-            for(l=0;l<10;l++)
-            {
+           
             
                 set(5,2);
                 set(2,2);
@@ -226,8 +226,13 @@ int main(void)
                 }
             
                 
-                _delay_ms(200); 
+                _delay_ms(200);
+            }
             
+            while(( (PINB & (1<<PINB2)) < 1) & (index == 1))
+            {
+                index = 0;
+                
                 set(5,2);
                 set(2,2);
                 set(8,2);
@@ -297,9 +302,10 @@ int main(void)
                     resetarray();   
                 }
                 reset();
-                _delay_ms(200);
+                _delay_ms(200);git 
+                
             }
-        }
+        
                 
         
     
