@@ -246,7 +246,7 @@ int main(void)
                 resetarray();
             
             
-                for(j=0;j<10;j++)
+                for(j=0;j<5;j++)
                 {
                     set(1,1);
                     set(5,1);
@@ -259,6 +259,7 @@ int main(void)
                     set(5,3);
                     set(9,3);
                     setPort(5);
+                    
                     resetarray();
                 
                     set(4,1);
