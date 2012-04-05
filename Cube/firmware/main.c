@@ -302,7 +302,7 @@ int main(void)
                     resetarray();   
                 }
                 reset();
-                _delay_ms(200);git 
+                _delay_ms(200);
                 
             }
         
