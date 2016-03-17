@@ -1,0 +1,1034 @@
+
+main.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000394  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00000394  00000428  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000007  00800060  00800060  00000428  2**0
+                  ALLOC
+  3 .comment      00000011  00000000  00000000  00000428  2**0
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000068  00000000  00000000  00000440  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000f96  00000000  00000000  000004a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000006a6  00000000  00000000  0000143e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   0000031a  00000000  00000000  00001ae4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000064  00000000  00000000  00001e00  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000286  00000000  00000000  00001e64  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000005bd  00000000  00000000  000020ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000d8  00000000  00000000  000026a7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1b c0       	rjmp	.+54     	; 0x38 <__ctors_end>
+   2:	2a c0       	rjmp	.+84     	; 0x58 <__bad_interrupt>
+   4:	29 c0       	rjmp	.+82     	; 0x58 <__bad_interrupt>
+   6:	28 c0       	rjmp	.+80     	; 0x58 <__bad_interrupt>
+   8:	27 c0       	rjmp	.+78     	; 0x58 <__bad_interrupt>
+   a:	26 c0       	rjmp	.+76     	; 0x58 <__bad_interrupt>
+   c:	25 c0       	rjmp	.+74     	; 0x58 <__bad_interrupt>
+   e:	24 c0       	rjmp	.+72     	; 0x58 <__bad_interrupt>
+  10:	23 c0       	rjmp	.+70     	; 0x58 <__bad_interrupt>
+  12:	22 c0       	rjmp	.+68     	; 0x58 <__bad_interrupt>
+  14:	21 c0       	rjmp	.+66     	; 0x58 <__bad_interrupt>
+  16:	20 c0       	rjmp	.+64     	; 0x58 <__bad_interrupt>
+  18:	1f c0       	rjmp	.+62     	; 0x58 <__bad_interrupt>
+  1a:	1e c0       	rjmp	.+60     	; 0x58 <__bad_interrupt>
+  1c:	1d c0       	rjmp	.+58     	; 0x58 <__bad_interrupt>
+  1e:	1c c0       	rjmp	.+56     	; 0x58 <__bad_interrupt>
+  20:	1b c0       	rjmp	.+54     	; 0x58 <__bad_interrupt>
+  22:	1a c0       	rjmp	.+52     	; 0x58 <__bad_interrupt>
+  24:	19 c0       	rjmp	.+50     	; 0x58 <__bad_interrupt>
+  26:	95 c0       	rjmp	.+298    	; 0x152 <set+0x2a>
+  28:	97 c0       	rjmp	.+302    	; 0x158 <set+0x30>
+  2a:	9a c0       	rjmp	.+308    	; 0x160 <set+0x38>
+  2c:	9d c0       	rjmp	.+314    	; 0x168 <set+0x40>
+  2e:	a0 c0       	rjmp	.+320    	; 0x170 <set+0x48>
+  30:	a3 c0       	rjmp	.+326    	; 0x178 <set+0x50>
+  32:	a6 c0       	rjmp	.+332    	; 0x180 <set+0x58>
+  34:	8a c0       	rjmp	.+276    	; 0x14a <set+0x22>
+  36:	86 c0       	rjmp	.+268    	; 0x144 <set+0x1c>
+
+00000038 <__ctors_end>:
+  38:	11 24       	eor	r1, r1
+  3a:	1f be       	out	0x3f, r1	; 63
+  3c:	cf e5       	ldi	r28, 0x5F	; 95
+  3e:	d4 e0       	ldi	r29, 0x04	; 4
+  40:	de bf       	out	0x3e, r29	; 62
+  42:	cd bf       	out	0x3d, r28	; 61
+
+00000044 <__do_clear_bss>:
+  44:	10 e0       	ldi	r17, 0x00	; 0
+  46:	a0 e6       	ldi	r26, 0x60	; 96
+  48:	b0 e0       	ldi	r27, 0x00	; 0
+  4a:	01 c0       	rjmp	.+2      	; 0x4e <.do_clear_bss_start>
+
+0000004c <.do_clear_bss_loop>:
+  4c:	1d 92       	st	X+, r1
+
+0000004e <.do_clear_bss_start>:
+  4e:	a7 36       	cpi	r26, 0x67	; 103
+  50:	b1 07       	cpc	r27, r17
+  52:	e1 f7       	brne	.-8      	; 0x4c <.do_clear_bss_loop>
+  54:	99 d0       	rcall	.+306    	; 0x188 <main>
+  56:	9c c1       	rjmp	.+824    	; 0x390 <_exit>
+
+00000058 <__bad_interrupt>:
+  58:	d3 cf       	rjmp	.-90     	; 0x0 <__vectors>
+
+0000005a <setPort>:
+    {0,0,0}
+};
+
+int setPort(int myfrequence)
+{
+    for(i=0;i< myfrequence ;i++)
+  5a:	10 92 66 00 	sts	0x0066, r1
+  5e:	18 16       	cp	r1, r24
+  60:	19 06       	cpc	r1, r25
+  62:	0c f0       	brlt	.+2      	; 0x66 <setPort+0xc>
+  64:	42 c0       	rjmp	.+132    	; 0xea <setPort+0x90>
+        else
+        {
+            PORTB &= ~(1<<0);
+        };
+        
+        PORTC = (1 << 4)| (1 << 5);
+  66:	60 e3       	ldi	r22, 0x30	; 48
+        else
+        {
+            PORTB &= ~(1<<0);
+        };
+        
+        PORTC = (1 << 3) | (1 << 5) ;
+  68:	58 e2       	ldi	r21, 0x28	; 40
+        {
+            PORTB &= ~(1<<0);
+        };
+        
+        
+        PORTC = (1 << 3) | (1 << 4) ;
+  6a:	48 e1       	ldi	r20, 0x18	; 24
+  6c:	31 c0       	rjmp	.+98     	; 0xd0 <setPort+0x76>
+    for(i=0;i< myfrequence ;i++)
+    {
+        PORTD = LED[0][0];
+        if (LED[1][0])
+        {
+            PORTB |= (1<<0);
+  6e:	c0 9a       	sbi	0x18, 0	; 24
+        else
+        {
+            PORTB &= ~(1<<0);
+        };
+        
+        PORTC = (1 << 4)| (1 << 5);
+  70:	65 bb       	out	0x15, r22	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  72:	ef e1       	ldi	r30, 0x1F	; 31
+  74:	fe e4       	ldi	r31, 0x4E	; 78
+  76:	31 97       	sbiw	r30, 0x01	; 1
+  78:	f1 f7       	brne	.-4      	; 0x76 <setPort+0x1c>
+  7a:	00 c0       	rjmp	.+0      	; 0x7c <setPort+0x22>
+  7c:	00 00       	nop
+        _delay_ms(mydelay);
+    
+        
+        PORTD = LED[0][1];
+  7e:	20 91 61 00 	lds	r18, 0x0061
+  82:	22 bb       	out	0x12, r18	; 18
+        if (LED[1][1])
+  84:	20 91 64 00 	lds	r18, 0x0064
+  88:	22 23       	and	r18, r18
+  8a:	69 f1       	breq	.+90     	; 0xe6 <setPort+0x8c>
+        {
+            PORTB |= (1<<0);
+  8c:	c0 9a       	sbi	0x18, 0	; 24
+        else
+        {
+            PORTB &= ~(1<<0);
+        };
+        
+        PORTC = (1 << 3) | (1 << 5) ;
+  8e:	55 bb       	out	0x15, r21	; 21
+  90:	ef e1       	ldi	r30, 0x1F	; 31
+  92:	fe e4       	ldi	r31, 0x4E	; 78
+  94:	31 97       	sbiw	r30, 0x01	; 1
+  96:	f1 f7       	brne	.-4      	; 0x94 <setPort+0x3a>
+  98:	00 c0       	rjmp	.+0      	; 0x9a <setPort+0x40>
+  9a:	00 00       	nop
+        _delay_ms(mydelay);
+    
+        PORTD = LED[0][2];
+  9c:	20 91 62 00 	lds	r18, 0x0062
+  a0:	22 bb       	out	0x12, r18	; 18
+        if (LED[1][2])
+  a2:	20 91 65 00 	lds	r18, 0x0065
+  a6:	22 23       	and	r18, r18
+  a8:	e1 f0       	breq	.+56     	; 0xe2 <setPort+0x88>
+        {
+            PORTB |= (1<<0);
+  aa:	c0 9a       	sbi	0x18, 0	; 24
+        {
+            PORTB &= ~(1<<0);
+        };
+        
+        
+        PORTC = (1 << 3) | (1 << 4) ;
+  ac:	45 bb       	out	0x15, r20	; 21
+  ae:	ef e1       	ldi	r30, 0x1F	; 31
+  b0:	fe e4       	ldi	r31, 0x4E	; 78
+  b2:	31 97       	sbiw	r30, 0x01	; 1
+  b4:	f1 f7       	brne	.-4      	; 0xb2 <setPort+0x58>
+  b6:	00 c0       	rjmp	.+0      	; 0xb8 <setPort+0x5e>
+  b8:	00 00       	nop
+    {0,0,0}
+};
+
+int setPort(int myfrequence)
+{
+    for(i=0;i< myfrequence ;i++)
+  ba:	20 91 66 00 	lds	r18, 0x0066
+  be:	2f 5f       	subi	r18, 0xFF	; 255
+  c0:	20 93 66 00 	sts	0x0066, r18
+  c4:	33 27       	eor	r19, r19
+  c6:	27 fd       	sbrc	r18, 7
+  c8:	30 95       	com	r19
+  ca:	28 17       	cp	r18, r24
+  cc:	39 07       	cpc	r19, r25
+  ce:	6c f4       	brge	.+26     	; 0xea <setPort+0x90>
+    {
+        PORTD = LED[0][0];
+  d0:	20 91 60 00 	lds	r18, 0x0060
+  d4:	22 bb       	out	0x12, r18	; 18
+        if (LED[1][0])
+  d6:	20 91 63 00 	lds	r18, 0x0063
+  da:	21 11       	cpse	r18, r1
+  dc:	c8 cf       	rjmp	.-112    	; 0x6e <setPort+0x14>
+        {
+            PORTB |= (1<<0);
+        }
+        else
+        {
+            PORTB &= ~(1<<0);
+  de:	c0 98       	cbi	0x18, 0	; 24
+  e0:	c7 cf       	rjmp	.-114    	; 0x70 <setPort+0x16>
+        {
+            PORTB |= (1<<0);
+        }
+        else
+        {
+            PORTB &= ~(1<<0);
+  e2:	c0 98       	cbi	0x18, 0	; 24
+  e4:	e3 cf       	rjmp	.-58     	; 0xac <setPort+0x52>
+        {
+            PORTB |= (1<<0);
+        }
+        else
+        {
+            PORTB &= ~(1<<0);
+  e6:	c0 98       	cbi	0x18, 0	; 24
+  e8:	d2 cf       	rjmp	.-92     	; 0x8e <setPort+0x34>
+        PORTC = (1 << 3) | (1 << 4) ;
+        _delay_ms(mydelay);
+    }
+
+    
+}
+  ea:	80 e0       	ldi	r24, 0x00	; 0
+  ec:	90 e0       	ldi	r25, 0x00	; 0
+  ee:	08 95       	ret
+
+000000f0 <resetarray>:
+
+int resetarray(void)
+{
+    LED[0][0] = 0;
+  f0:	10 92 60 00 	sts	0x0060, r1
+    LED[0][1] = 0;
+  f4:	10 92 61 00 	sts	0x0061, r1
+    LED[0][2] = 0;
+  f8:	10 92 62 00 	sts	0x0062, r1
+    LED[1][0] = 0;
+  fc:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 100:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 104:	10 92 65 00 	sts	0x0065, r1
+}
+ 108:	08 95       	ret
+
+0000010a <reset>:
+    
+}
+
+int resetarray(void)
+{
+    LED[0][0] = 0;
+ 10a:	10 92 60 00 	sts	0x0060, r1
+    LED[0][1] = 0;
+ 10e:	10 92 61 00 	sts	0x0061, r1
+    LED[0][2] = 0;
+ 112:	10 92 62 00 	sts	0x0062, r1
+    LED[1][0] = 0;
+ 116:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 11a:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 11e:	10 92 65 00 	sts	0x0065, r1
+
+
+int reset(void)
+{
+    resetarray();
+    setPort(1);
+ 122:	81 e0       	ldi	r24, 0x01	; 1
+ 124:	90 e0       	ldi	r25, 0x00	; 0
+ 126:	99 cf       	rjmp	.-206    	; 0x5a <setPort>
+
+00000128 <set>:
+}
+
+int set(int x,int y)
+{
+    y=y-1;
+ 128:	61 50       	subi	r22, 0x01	; 1
+ 12a:	71 09       	sbc	r23, r1
+    switch(x)
+ 12c:	01 97       	sbiw	r24, 0x01	; 1
+ 12e:	89 30       	cpi	r24, 0x09	; 9
+ 130:	91 05       	cpc	r25, r1
+ 132:	50 f4       	brcc	.+20     	; 0x148 <set+0x20>
+ 134:	8d 5e       	subi	r24, 0xED	; 237
+ 136:	9f 4f       	sbci	r25, 0xFF	; 255
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 138:	fb 01       	movw	r30, r22
+ 13a:	e0 5a       	subi	r30, 0xA0	; 160
+ 13c:	ff 4f       	sbci	r31, 0xFF	; 255
+}
+
+int set(int x,int y)
+{
+    y=y-1;
+    switch(x)
+ 13e:	8f 93       	push	r24
+ 140:	9f 93       	push	r25
+ 142:	08 95       	ret
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 144:	81 e0       	ldi	r24, 0x01	; 1
+ 146:	83 83       	std	Z+3, r24	; 0x03
+            break;
+    }
+}
+ 148:	08 95       	ret
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 14a:	80 81       	ld	r24, Z
+ 14c:	80 68       	ori	r24, 0x80	; 128
+ 14e:	80 83       	st	Z, r24
+            break;
+ 150:	08 95       	ret
+{
+    y=y-1;
+    switch(x)
+    {
+        case 1:
+            LED[0][y] = 1 ;
+ 152:	81 e0       	ldi	r24, 0x01	; 1
+ 154:	80 83       	st	Z, r24
+            break;
+ 156:	08 95       	ret
+        case 2:
+            LED[0][y] |= 1 << 1 ;
+ 158:	80 81       	ld	r24, Z
+ 15a:	82 60       	ori	r24, 0x02	; 2
+ 15c:	80 83       	st	Z, r24
+            break;
+ 15e:	08 95       	ret
+        case 3:
+            LED[0][y] |= 1 << 2;
+ 160:	80 81       	ld	r24, Z
+ 162:	84 60       	ori	r24, 0x04	; 4
+ 164:	80 83       	st	Z, r24
+            break;
+ 166:	08 95       	ret
+        case 4:
+            LED[0][y] |= 1 << 3;
+ 168:	80 81       	ld	r24, Z
+ 16a:	88 60       	ori	r24, 0x08	; 8
+ 16c:	80 83       	st	Z, r24
+            break;
+ 16e:	08 95       	ret
+        case 5:
+            LED[0][y] |= 1 << 4;
+ 170:	80 81       	ld	r24, Z
+ 172:	80 61       	ori	r24, 0x10	; 16
+ 174:	80 83       	st	Z, r24
+            break;
+ 176:	08 95       	ret
+        case 6:
+            LED[0][y] |= 1 << 5;
+ 178:	80 81       	ld	r24, Z
+ 17a:	80 62       	ori	r24, 0x20	; 32
+ 17c:	80 83       	st	Z, r24
+            break;
+ 17e:	08 95       	ret
+        case 7:
+            LED[0][y] |= 1 << 6;
+ 180:	80 81       	ld	r24, Z
+ 182:	80 64       	ori	r24, 0x40	; 64
+ 184:	80 83       	st	Z, r24
+            break;
+ 186:	08 95       	ret
+
+00000188 <main>:
+    }
+}
+
+int main(void)
+{
+    DDRD =
+ 188:	8f ef       	ldi	r24, 0xFF	; 255
+ 18a:	81 bb       	out	0x11, r24	; 17
+    1<<5| //6.LED
+    1<<6| //7.LED
+    1<<7 //8.LED
+    ;               // schaltet LED ein
+    
+    DDRB =
+ 18c:	81 e0       	ldi	r24, 0x01	; 1
+ 18e:	87 bb       	out	0x17, r24	; 23
+    1<<0; //9.LED  
+    
+    DDRC =
+ 190:	88 e3       	ldi	r24, 0x38	; 56
+ 192:	84 bb       	out	0x14, r24	; 20
+    1<<3 | //1.EBENE
+    1<<4 | //2.EBENE
+    1<<5;  //3.EBENE
+    
+    
+    DDRB &= ~(1 << DDB2);   
+ 194:	ba 98       	cbi	0x17, 2	; 23
+    
+    PORTB |= (1 << PORTB2); 
+ 196:	c2 9a       	sbi	0x18, 2	; 24
+    
+    
+    char p,l,j,index;
+    index = 0;
+ 198:	80 e0       	ldi	r24, 0x00	; 0
+ 19a:	aa 24       	eor	r10, r10
+ 19c:	a3 94       	inc	r10
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 19e:	c2 e9       	ldi	r28, 0x92	; 146
+            break;
+        case 4:
+            LED[0][y] |= 1 << 3;
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+ 1a0:	91 e1       	ldi	r25, 0x11	; 17
+ 1a2:	e9 2e       	mov	r14, r25
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 1a4:	11 e0       	ldi	r17, 0x01	; 1
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+ 1a6:	28 e3       	ldi	r18, 0x38	; 56
+ 1a8:	f2 2e       	mov	r15, r18
+            break;
+        case 2:
+            LED[0][y] |= 1 << 1 ;
+            break;
+        case 3:
+            LED[0][y] |= 1 << 2;
+ 1aa:	04 e5       	ldi	r16, 0x54	; 84
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+ 1ac:	34 e2       	ldi	r19, 0x24	; 36
+ 1ae:	c3 2e       	mov	r12, r19
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+ 1b0:	49 e4       	ldi	r20, 0x49	; 73
+ 1b2:	d4 2e       	mov	r13, r20
+    
+    
+    while (1)
+    {
+        
+        while(( (PINB & (1<<PINB2)) < 1) & (index == 0))
+ 1b4:	96 b3       	in	r25, 0x16	; 22
+ 1b6:	8a 11       	cpse	r24, r10
+ 1b8:	78 c0       	rjmp	.+240    	; 0x2aa <main+0x122>
+            
+                
+                _delay_ms(200);
+            }
+            
+            while(( (PINB & (1<<PINB2)) < 1) & (index == 1))
+ 1ba:	96 b3       	in	r25, 0x16	; 22
+ 1bc:	88 23       	and	r24, r24
+ 1be:	d1 f3       	breq	.-12     	; 0x1b4 <main+0x2c>
+ 1c0:	92 fd       	sbrc	r25, 2
+ 1c2:	f8 cf       	rjmp	.-16     	; 0x1b4 <main+0x2c>
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 1c4:	80 91 61 00 	lds	r24, 0x0061
+ 1c8:	82 69       	ori	r24, 0x92	; 146
+ 1ca:	80 93 61 00 	sts	0x0061, r24
+                index = 0;
+                
+                set(5,2);
+                set(2,2);
+                set(8,2);
+                setPort(30);
+ 1ce:	8e e1       	ldi	r24, 0x1E	; 30
+ 1d0:	90 e0       	ldi	r25, 0x00	; 0
+ 1d2:	43 df       	rcall	.-378    	; 0x5a <setPort>
+int resetarray(void)
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+ 1d4:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 1d8:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 1dc:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 1e0:	c0 93 61 00 	sts	0x0061, r28
+ 1e4:	c0 93 60 00 	sts	0x0060, r28
+ 1e8:	c0 93 62 00 	sts	0x0062, r28
+                set(5,1);
+                set(8,1);
+                set(2,3);
+                set(5,3);
+                set(8,3);
+                setPort(30);
+ 1ec:	8e e1       	ldi	r24, 0x1E	; 30
+ 1ee:	90 e0       	ldi	r25, 0x00	; 0
+ 1f0:	34 df       	rcall	.-408    	; 0x5a <setPort>
+ 1f2:	da e0       	ldi	r29, 0x0A	; 10
+            break;
+        case 4:
+            LED[0][y] |= 1 << 3;
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+ 1f4:	e0 92 60 00 	sts	0x0060, r14
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 1f8:	10 93 63 00 	sts	0x0063, r17
+            break;
+        case 4:
+            LED[0][y] |= 1 << 3;
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+ 1fc:	e0 92 61 00 	sts	0x0061, r14
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 200:	10 93 64 00 	sts	0x0064, r17
+            break;
+        case 4:
+            LED[0][y] |= 1 << 3;
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+ 204:	e0 92 62 00 	sts	0x0062, r14
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 208:	10 93 65 00 	sts	0x0065, r17
+                    set(5,2);
+                    set(9,2);
+                    set(1,3);
+                    set(5,3);
+                    set(9,3);
+                    setPort(5);
+ 20c:	85 e0       	ldi	r24, 0x05	; 5
+ 20e:	90 e0       	ldi	r25, 0x00	; 0
+ 210:	24 df       	rcall	.-440    	; 0x5a <setPort>
+int resetarray(void)
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+ 212:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 216:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 21a:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+ 21e:	f0 92 60 00 	sts	0x0060, r15
+ 222:	f0 92 61 00 	sts	0x0061, r15
+ 226:	f0 92 62 00 	sts	0x0062, r15
+                    set(5,2);
+                    set(6,2);
+                    set(4,3);
+                    set(5,3);
+                    set(6,3);
+                    setPort(5);
+ 22a:	85 e0       	ldi	r24, 0x05	; 5
+ 22c:	90 e0       	ldi	r25, 0x00	; 0
+ 22e:	15 df       	rcall	.-470    	; 0x5a <setPort>
+int resetarray(void)
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+ 230:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 234:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 238:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 2:
+            LED[0][y] |= 1 << 1 ;
+            break;
+        case 3:
+            LED[0][y] |= 1 << 2;
+ 23c:	00 93 60 00 	sts	0x0060, r16
+ 240:	00 93 61 00 	sts	0x0061, r16
+ 244:	00 93 62 00 	sts	0x0062, r16
+                    set(5,2);
+                    set(3,2);
+                    set(7,3);
+                    set(5,3);
+                    set(3,3);
+                    setPort(5);
+ 248:	85 e0       	ldi	r24, 0x05	; 5
+ 24a:	90 e0       	ldi	r25, 0x00	; 0
+ 24c:	06 df       	rcall	.-500    	; 0x5a <setPort>
+int resetarray(void)
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+ 24e:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 252:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 256:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 25a:	c0 93 60 00 	sts	0x0060, r28
+ 25e:	c0 93 61 00 	sts	0x0061, r28
+ 262:	c0 93 62 00 	sts	0x0062, r28
+                    set(5,2);
+                    set(8,2);
+                    set(2,3);
+                    set(5,3);
+                    set(8,3);
+                    setPort(5);
+ 266:	85 e0       	ldi	r24, 0x05	; 5
+ 268:	90 e0       	ldi	r25, 0x00	; 0
+ 26a:	f7 de       	rcall	.-530    	; 0x5a <setPort>
+    
+}
+
+int resetarray(void)
+{
+    LED[0][0] = 0;
+ 26c:	10 92 60 00 	sts	0x0060, r1
+    LED[0][1] = 0;
+ 270:	10 92 61 00 	sts	0x0061, r1
+    LED[0][2] = 0;
+ 274:	10 92 62 00 	sts	0x0062, r1
+    LED[1][0] = 0;
+ 278:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 27c:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 280:	10 92 65 00 	sts	0x0065, r1
+ 284:	d1 50       	subi	r29, 0x01	; 1
+                set(8,3);
+                setPort(30);
+                resetarray();
+            
+            
+                for(j=0;j<10;j++)
+ 286:	09 f0       	breq	.+2      	; 0x28a <main+0x102>
+ 288:	b5 cf       	rjmp	.-150    	; 0x1f4 <main+0x6c>
+                    set(5,3);
+                    set(8,3);
+                    setPort(5);
+                    resetarray();   
+                }
+                reset();
+ 28a:	3f df       	rcall	.-386    	; 0x10a <reset>
+ 28c:	2f ef       	ldi	r18, 0xFF	; 255
+ 28e:	83 ec       	ldi	r24, 0xC3	; 195
+ 290:	99 e0       	ldi	r25, 0x09	; 9
+ 292:	21 50       	subi	r18, 0x01	; 1
+ 294:	80 40       	sbci	r24, 0x00	; 0
+ 296:	90 40       	sbci	r25, 0x00	; 0
+ 298:	e1 f7       	brne	.-8      	; 0x292 <main+0x10a>
+ 29a:	00 c0       	rjmp	.+0      	; 0x29c <main+0x114>
+ 29c:	00 00       	nop
+            
+                
+                _delay_ms(200);
+            }
+            
+            while(( (PINB & (1<<PINB2)) < 1) & (index == 1))
+ 29e:	86 b3       	in	r24, 0x16	; 22
+            {
+                index = 0;
+ 2a0:	80 e0       	ldi	r24, 0x00	; 0
+    
+    
+    while (1)
+    {
+        
+        while(( (PINB & (1<<PINB2)) < 1) & (index == 0))
+ 2a2:	96 b3       	in	r25, 0x16	; 22
+ 2a4:	8a 15       	cp	r24, r10
+ 2a6:	09 f4       	brne	.+2      	; 0x2aa <main+0x122>
+ 2a8:	88 cf       	rjmp	.-240    	; 0x1ba <main+0x32>
+ 2aa:	92 fd       	sbrc	r25, 2
+ 2ac:	86 cf       	rjmp	.-244    	; 0x1ba <main+0x32>
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 2ae:	80 91 61 00 	lds	r24, 0x0061
+ 2b2:	82 69       	ori	r24, 0x92	; 146
+ 2b4:	80 93 61 00 	sts	0x0061, r24
+           
+            
+                set(5,2);
+                set(2,2);
+                set(8,2);
+                setPort(30);
+ 2b8:	8e e1       	ldi	r24, 0x1E	; 30
+ 2ba:	90 e0       	ldi	r25, 0x00	; 0
+ 2bc:	ce de       	rcall	.-612    	; 0x5a <setPort>
+    
+}
+
+int resetarray(void)
+{
+    LED[0][0] = 0;
+ 2be:	10 92 60 00 	sts	0x0060, r1
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+ 2c2:	10 92 62 00 	sts	0x0062, r1
+    LED[1][0] = 0;
+ 2c6:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+    LED[1][2] = 0;
+ 2ca:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 2ce:	8f ef       	ldi	r24, 0xFF	; 255
+ 2d0:	80 93 61 00 	sts	0x0061, r24
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 2d4:	10 93 64 00 	sts	0x0064, r17
+                set(5,2);
+                set(6,2);
+                set(7,2);
+                set(8,2);
+                set(9,2);
+                setPort(30);
+ 2d8:	8e e1       	ldi	r24, 0x1E	; 30
+ 2da:	90 e0       	ldi	r25, 0x00	; 0
+ 2dc:	be de       	rcall	.-644    	; 0x5a <setPort>
+int resetarray(void)
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+ 2de:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 2e2:	10 92 64 00 	sts	0x0064, r1
+ 2e6:	da e0       	ldi	r29, 0x0A	; 10
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 2e8:	bb 24       	eor	r11, r11
+ 2ea:	ba 94       	dec	r11
+ 2ec:	c0 93 61 00 	sts	0x0061, r28
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+ 2f0:	c0 92 62 00 	sts	0x0062, r12
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 2f4:	10 93 65 00 	sts	0x0065, r17
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+ 2f8:	d0 92 60 00 	sts	0x0060, r13
+                    set(6,3);
+                    set(9,3);
+                    set(1,1);
+                    set(4,1);
+                    set(7,1);
+                    setPort(5);
+ 2fc:	85 e0       	ldi	r24, 0x05	; 5
+ 2fe:	90 e0       	ldi	r25, 0x00	; 0
+ 300:	ac de       	rcall	.-680    	; 0x5a <setPort>
+int resetarray(void)
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+ 302:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 306:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 30a:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 30e:	c0 93 61 00 	sts	0x0061, r28
+ 312:	c0 93 60 00 	sts	0x0060, r28
+ 316:	c0 93 62 00 	sts	0x0062, r28
+                    set(5,1);
+                    set(8,1);
+                    set(2,3);
+                    set(5,3);
+                    set(8,3);
+                    setPort(5);
+ 31a:	85 e0       	ldi	r24, 0x05	; 5
+ 31c:	90 e0       	ldi	r25, 0x00	; 0
+ 31e:	9d de       	rcall	.-710    	; 0x5a <setPort>
+{
+    LED[0][0] = 0;
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+    LED[1][0] = 0;
+    LED[1][1] = 0;
+ 320:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 324:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 328:	c0 93 61 00 	sts	0x0061, r28
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+ 32c:	d0 92 62 00 	sts	0x0062, r13
+            break;
+        case 5:
+            LED[0][y] |= 1 << 4;
+            break;
+        case 6:
+            LED[0][y] |= 1 << 5;
+ 330:	c0 92 60 00 	sts	0x0060, r12
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 334:	10 93 63 00 	sts	0x0063, r17
+                    set(4,3);
+                    set(7,3);
+                    set(3,1);
+                    set(6,1);
+                    set(9,1);
+                    setPort(5);
+ 338:	85 e0       	ldi	r24, 0x05	; 5
+ 33a:	90 e0       	ldi	r25, 0x00	; 0
+ 33c:	8e de       	rcall	.-740    	; 0x5a <setPort>
+    
+}
+
+int resetarray(void)
+{
+    LED[0][0] = 0;
+ 33e:	10 92 60 00 	sts	0x0060, r1
+    LED[0][1] = 0;
+    LED[0][2] = 0;
+ 342:	10 92 62 00 	sts	0x0062, r1
+    LED[1][0] = 0;
+ 346:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+    LED[1][2] = 0;
+ 34a:	10 92 65 00 	sts	0x0065, r1
+            break;
+        case 7:
+            LED[0][y] |= 1 << 6;
+            break;
+        case 8:
+            LED[0][y] |= 1 << 7;
+ 34e:	b0 92 61 00 	sts	0x0061, r11
+            break;
+        case 9:
+            LED[1][y] = 1 << 0;
+ 352:	10 93 64 00 	sts	0x0064, r17
+                    set(5,2);
+                    set(6,2);
+                    set(7,2);
+                    set(8,2);
+                    set(9,2);
+                    setPort(5);
+ 356:	85 e0       	ldi	r24, 0x05	; 5
+ 358:	90 e0       	ldi	r25, 0x00	; 0
+ 35a:	7f de       	rcall	.-770    	; 0x5a <setPort>
+    
+}
+
+int resetarray(void)
+{
+    LED[0][0] = 0;
+ 35c:	10 92 60 00 	sts	0x0060, r1
+    LED[0][1] = 0;
+ 360:	10 92 61 00 	sts	0x0061, r1
+    LED[0][2] = 0;
+ 364:	10 92 62 00 	sts	0x0062, r1
+    LED[1][0] = 0;
+ 368:	10 92 63 00 	sts	0x0063, r1
+    LED[1][1] = 0;
+ 36c:	10 92 64 00 	sts	0x0064, r1
+    LED[1][2] = 0;
+ 370:	10 92 65 00 	sts	0x0065, r1
+ 374:	d1 50       	subi	r29, 0x01	; 1
+                set(8,2);
+                set(9,2);
+                setPort(30);
+                resetarray();
+            
+                for(p=0;p<10;p++)
+ 376:	09 f0       	breq	.+2      	; 0x37a <main+0x1f2>
+ 378:	b9 cf       	rjmp	.-142    	; 0x2ec <main+0x164>
+ 37a:	2f ef       	ldi	r18, 0xFF	; 255
+ 37c:	83 ec       	ldi	r24, 0xC3	; 195
+ 37e:	99 e0       	ldi	r25, 0x09	; 9
+ 380:	21 50       	subi	r18, 0x01	; 1
+ 382:	80 40       	sbci	r24, 0x00	; 0
+ 384:	90 40       	sbci	r25, 0x00	; 0
+ 386:	e1 f7       	brne	.-8      	; 0x380 <main+0x1f8>
+ 388:	00 c0       	rjmp	.+0      	; 0x38a <main+0x202>
+ 38a:	00 00       	nop
+    while (1)
+    {
+        
+        while(( (PINB & (1<<PINB2)) < 1) & (index == 0))
+        {
+            index++;
+ 38c:	81 e0       	ldi	r24, 0x01	; 1
+ 38e:	12 cf       	rjmp	.-476    	; 0x1b4 <main+0x2c>
+
+00000390 <_exit>:
+ 390:	f8 94       	cli
+
+00000392 <__stop_program>:
+ 392:	ff cf       	rjmp	.-2      	; 0x392 <__stop_program>
